@@ -1,0 +1,29 @@
+* {
+    padding: 0%;
+    margin: 0%;
+}
+
+body {
+    background-color: #f1f1f1;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+}
+
+main {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    text-decoration: none;
+    width: 100%;
+    margin-top: 5rem;
+    min-width: 700px;
+    min-height: 30px;
+}
