@@ -1,26 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <title>Document</title>
 </head>
+
 <body>
-    <main>
-        <div>
-            <h1>Criar Categorias</h1>
-            <input type="text" id="name-category">
+    <div id="container">
+        <h1 id="principal-title">📋 Categorias & Produtos</h1>
+
+        <div id="form-container">
+            <h2>📂 Criar Categoria</h2>
+            <div id="form-container2">
+                <input type="text" placeholder="Nome da Categoria" class="style-input" id="categoryName" required />
+                <div class="btn-div">
+                    <button type="button" class="btn" onclick="createCategory()">Criar Categoria</button>
+                </div>
+            </div>
         </div>
 
-        <div>
-            <h1>Ciar Produtos:</h1>
-            <input type="text" id="name-product">
-            <input type="number" id="price-product">
-            <select name="categories" id="created-categories">
-                <option></option></select>
+        <div id="form-container-product">
+            <h2>📝 Criar Produtos</h2>
+            <div id="form-container-product2">
+                <input type="text" id="name-product" class="style-input" placeholder="Nome do produto" required />
+                <input type="number" id="price-product" class="style-input" placeholder="Valor do produto" required />
+                <label id="title-categories">🎫 Categoria do produto</label>
+                <select name="categories" class="style-input">
+                    <option id="categories"></option>
+                </select>
+
+                <div class="btn-div">
+                    <button type="button" class="btn" onclick="createProduct()">Criar Produto</button>
+                </div>
+            </div>
         </div>
-    </main>
-<button onclick="createCategory()">Criar</button>
+
+        <div id="container-">
+            <h1 id="product-creation-title">📦 Produtos Criados</h1>
+            <div id="list" class="style-list">
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

@@ -1,0 +1,123 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+#container {
+    max-width: 50rem;
+    margin: 0 auto;
+    background-color: #202020;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0.1);
+    color: white;
+    margin-top: 15rem;
+}
+
+#principal-title {
+    text-align: center;
+}
+
+#form-container {
+    margin-top: 1.5rem;
+    background-color: #3c3c3c;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+#form-container2 {
+    display: flex;
+    flex-direction: column; 
+    margin-top: 0.8rem;
+    font-size: 1.2rem;
+    color: black;
+}
+
+.style-input {
+    color: black;
+    border: 1px solid black;
+    padding: 0.3rem;
+    margin-bottom: 0.1rem;
+    background-color: #e7e7e7;
+}
+
+.style-input:hover {
+    border: 1px solid black;
+    padding: 0.3rem;
+}
+
+.btn {
+    color: black;
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    border: 0.5px solid black;
+    border-radius: 0.2rem;
+    padding: 0.1rem;
+    max-width: 300px;
+    padding: 0.5rem;
+    margin-top: 0.2rem;
+}
+
+.btn-div {
+   margin-top: 0.3rem;
+}
+
+#form-container-product {
+    margin-top: 1.5rem;
+    background-color: #3c3c3c;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+#form-container-product2 {
+    display: flex;
+    flex-direction: column; 
+    margin-top: 0.8rem;
+    font-size: 1.2rem;
+}
+
+#title-categories {
+    margin-top: 1rem;
+}
+
+#product-creation-title {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.style-list {
+    visibility: hidden;
+}
+
+.style-list2 {
+    margin-top: 1.5rem;
+    background-color: #3c3c3c;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: white;
+}
+
+#btn-edit-remove {
+    margin-top: 1rem;
+}
+
+.editButton {
+    background-color: blue;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.removeButton {
+    background-color: red;
+    cursor: pointer;
+    padding: 0.5rem;
+}
