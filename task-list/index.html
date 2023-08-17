@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.index.css">
+    <script src="assets/js/script.index.js"></script>
+    <title>Tasks</title>
+</head>
+
+<body>
+    <main>
+        <div id="text-alert">
+            <p>Por Favor coloque um título para sua tarefa!</p>
+        </div>
+        <div id="required-div">
+            <input id="title" type="text" name="title" placeholder="Adicione uma nova tarefa" required />
+            <button id="principal-button" type="button" onclick="newTask()">
+                <i class="fa-solid fa-plus" style="color: #000000;"></i>
+            </button>
+        </div>
+
+<div id="task" class="hidden">
+
+</div>
+    </main>
+</body>
+
+</html>
