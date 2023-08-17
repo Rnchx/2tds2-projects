@@ -15,6 +15,20 @@ class Product {
     }
 }
 
+class CategoryService {
+    constructor() {
+        this.categories = [];
+        this.nextCategoryID = 1;
+    }
+
+    addCategory(name) {
+        const id = this.nextCategoryID ++;
+        const category = new Category('id', 'name');
+    }
+}
+
+
+
 
 
 
