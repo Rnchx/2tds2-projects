@@ -78,6 +78,8 @@ function createProduct() {
     <ul class="productsListByCategory">`;
 
     console.log(productList.products);
+    console.log(categoryList);
+    console.log(category);
 }
 
 function remove() {
