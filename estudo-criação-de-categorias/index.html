@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="https://revistazelo.com.br/wp-content/uploads/2023/07/X.jpg">
+    <script src="script.estudo.js"></script>
+    <title>Formolário Elon Musk</title>
 </head>
 
 <body>
@@ -31,10 +32,15 @@
             </div>
             <div class="divs-inputs-and-labels">
                 <label class="labels">Selecione seu gênero</label>
-                <select name="gender" id="select-gender" class="style-select-Gender">
+                <select name="gender" id="select-gender" class="style-select-Gender" required />
+                    <option id="opt1-M"></option>
                     <option id="opt1-M">M</option>
                     <option id="opt2-F">F</option>
                 </select>
+            </div>
+            <div class="divs-inputs-and-labels">
+                <label class="labels">Insira sua Carga horária disponível</label>
+                <input type="number" id="inpt-Carga-horária" class="style-inpt-Carga-horária" placeholder="Horas" required />
             </div>
             <div class="divs-inputs-and-labels">
                 <label class="labels">data de nascimento</label>
@@ -42,7 +48,7 @@
                 <div id="div-btns">
                     <button type="button" id="btn-Create-Form" class="style-btns" onclick="CreateForm()">Clique aqui para enviar o
                         formulário</button>
-                    <button type="button" id="btn-Show-Waiting-List" class="style-btns" onclick="ShowWaitingList()"><a href="waiting.list.html">Clique aqui para ver a
+                    <button type="button" id="btn-Show-Waiting-List" class="style-btns" onclick="ShowWaitingList()"><a href="waiting.list.html" target="_blank">Clique aqui para ver a
                         lista de espera</a></button>
                 </div>
             </div>
