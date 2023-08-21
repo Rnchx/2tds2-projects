@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <script src="script.js"></script>
     <title>Document</title>
 </head>
+
 <body>
     <main>
         <div id="div-image">
@@ -14,24 +16,38 @@
         </div>
         <div id="div-questions-form">
             <h1 id="h1-form">Formulário para inscrição</h1>
-            <label class="labels">Insira seu nome</label>
-            <input type="text" id="inpt-name" class="style-inpt-name" placeholder="Nome" required />
-            <label class="labels">Insira seu número de telefone</label>
-            <input type="text" id="inpt-numberCell" class="style-inpt-numberCell" placeholder="Número de telefone" required />
-            <label class="labels">Insira seu CPF</label>
-            <input type="text" id="inpt-CPF" class="style-inpt-CPF" placeholder="CPF" required />
-            <label class="labels">Selecione seu gênero</label>
-            <select name="gender" id="select-gender" class="style-select-Gender">
-                <option id="opt1-M">M</option>
-                <option id="opt2-F">F</option>
-            </select>
-            <label class="labels">data de nascimento</label>
-            <input type="date" id="inpt-date" class="style-inpt-Date" required />
-            <div id="div-btns">
-                <button type="button" id="btn-Create-Form" onclick="CreateForm()">Clique aqui para enviar o formulário</button>
-                <button type="button" id="btn-Show-Waiting-List" onclick="ShowWaitingList()">Clique aqui para ver a lista de espera</button>
+            <div class="divs-inputs-and-labels">
+                <label class="labels">Insira seu nome</label>
+                <input type="text" id="inpt-name" class="style-inpt-name" placeholder="Nome" required />
+            </div>
+            <div class="divs-inputs-and-labels">
+                <label class="labels">Insira seu número de telefone</label>
+                <input type="number" id="inpt-numberCell" class="style-inpt-numberCell" placeholder="Número de telefone"
+                    required />
+            </div>
+            <div class="divs-inputs-and-labels">
+                <label class="labels">Insira seu CPF</label>
+                <input type="text" id="inpt-CPF" class="style-inpt-CPF" placeholder="CPF" required />
+            </div>
+            <div class="divs-inputs-and-labels">
+                <label class="labels">Selecione seu gênero</label>
+                <select name="gender" id="select-gender" class="style-select-Gender">
+                    <option id="opt1-M">M</option>
+                    <option id="opt2-F">F</option>
+                </select>
+            </div>
+            <div class="divs-inputs-and-labels">
+                <label class="labels">data de nascimento</label>
+                <input type="date" id="inpt-date" class="style-inpt-Date" required />
+                <div id="div-btns">
+                    <button type="button" id="btn-Create-Form" class="style-btns" onclick="CreateForm()">Clique aqui para enviar o
+                        formulário</button>
+                    <button type="button" id="btn-Show-Waiting-List" class="style-btns" onclick="ShowWaitingList()"><a href="waiting.list.html">Clique aqui para ver a
+                        lista de espera</a></button>
+                </div>
             </div>
         </div>
     </main>
 </body>
+
 </html>
