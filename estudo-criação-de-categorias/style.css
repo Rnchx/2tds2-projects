@@ -126,3 +126,35 @@ a {
     margin-bottom: 0.8rem;
     box-sizing: border-box;
 }
+
+.hidden-div-pai {
+    display: none;
+    visibility: hidden;
+}
+
+#div-pai {
+    margin-left: 1rem;
+}
+
+.hidden-h1-form {
+    visibility: hidden;
+    display: none;
+}
+
+.style-h1-form {
+    display: none;
+    visibility: hidden;
+}
+
+.hidden-show-waiting-list {
+    display: none;
+    visibility: hidden;
+}
+
+.style-show-waiting-list {
+    background-color: #202020;
+    width: 40%;
+    margin-top: 4rem;
+    padding: 1rem;
+    border-radius: 2%;
+}

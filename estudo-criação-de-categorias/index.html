@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <main>
+    <main id="main-principal">
         <div id="div-image">
             <img src="https://revistazelo.com.br/wp-content/uploads/2023/07/X.jpg">
         </div>
@@ -23,7 +23,7 @@
             </div>
             <div class="divs-inputs-and-labels">
                 <label class="labels">Insira seu número de telefone</label>
-                <input type="number" id="inpt-numberCell" class="style-inpt-numberCell" placeholder="Número de telefone"
+                <input type="text" id="inpt-numberCell" class="style-inpt-numberCell" minlength="11" maxlength="11" placeholder="Número de telefone"
                     required />
             </div>
             <div class="divs-inputs-and-labels">
@@ -48,12 +48,18 @@
                 <div id="div-btns">
                     <button type="button" id="btn-Create-Form" class="style-btns" onclick="CreateForm()">Clique aqui para enviar o
                         formulário</button>
-                    <button type="button" id="btn-Show-Waiting-List" class="style-btns" onclick="ShowWaitingList()"><a href="waiting.list.html" target="_blank">Clique aqui para ver a
-                        lista de espera</a></button>
+                    <button type="button" id="btn-Show-Waiting-List" class="style-btns" onclick="ShowWaitingList()">Clique aqui para ver a
+                        lista de espera</button>
                 </div>
             </div>
         </div>
     </main>
+    <div id="div-pai" class="hidden-div-pai">
+        <h1 id="h1-form" class="hidden-h1-form"><i class="fa-solid fa-person" style="color: #ffffff;"></i> Lista de espera</h1>
+        <div id="show-waiting-list" class="hidden-show-waiting-list">
+           
+        </div>
+    </div>
 </body>
 
 </html>

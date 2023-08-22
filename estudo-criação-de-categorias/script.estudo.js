@@ -24,8 +24,7 @@ class FormServices {
 
 const productList = new FormServices();
 
-
-Function CreateForm() {
+function CreateForm() {
    const name = document.getElementById("inpt-name").value;
    const numberCell = document.getElementById("inpt-numberCell").value;
    const cpf = document.getElementById("inpt-CPF").value;
@@ -41,12 +40,63 @@ Function CreateForm() {
    newForm.classList.remove("hidden");
    newForm.classList.add("style-show-waiting-list");
 
-   newForm += `
+   newForm.innerHTML += `
    <h2>Nome: ${name}</h2>
    <p>Telefone: ${numberCell} </p>
-   <p>cpf: ${cpf} </p>
-   `
+   <p>cpf: ${cpf}</p>
+   <p>gênero: ${gender}</p>
+   <p>Horas Disponíveis: ${oursWork}</p>
+   <p>Data: ${date} </P>`;
+}
 
+function ShowWaitingList() {
+    
+    let principalMain;
+    let divForm;
+    let h1Form;
+    let divShowList;
+
+    principalMain = document.getElementById("main-principal").value;
+    divForm = document.getElementById("div-pai").value;
+    h1Form = document.getElementById("h1-form").value;
+    divShowList = document.getElementById("show-waiting-list").value;
+
+    principalMain.classList.add("hidden-principalMain");
+    divForm.classList.remove("hidden-div-pai");
+    divForm.classList.add("style-div-pai");
+    h1Form.classList.remove("hidden-h1-form");
+    h1Form.classlist.add("style-h1-form");
+    divShowList.classlist.remove("hidden-show-waiting-list");
+    divShowList.classList.add("style-show-waiting-list");
+}
+
+function contAge() {
+    const age =document.getElementById("inpt-date").value;
+
+    age.split("-").reverse();
+
+    
+
+    const contador = 2023 - 
+}
+
+function verificateSigno() {
+    
+}
+
+function timeOut() {
+
+}
+
+function validCPF() {
+
+}
+
+function Sucess() {
+
+}
+
+function CleanFields() {
 
 }
 
