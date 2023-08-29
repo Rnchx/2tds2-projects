@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Concessionária</title>
+</head>
+<body>
+    <div id="container1">
+        <div id="form">
+            <input type="text" id="brand" placeholder="Marca" required />
+            <p id="msg-error-brand" class="hidden"></p>
+           
+            <input type="text" id="model" placeholder="Modelo" required />
+            <p id="msg-error-model" class="hidden"></p>
+            
+            <input type="text" id="year" placeholder="Ano" required />
+            <p id="msg-error-year" class="hidden"></p>
+ 
+            <input type="text" id="color" placeholder="Cor" required />
+            <p id="msg-error-color" class="hidden"></p>
+        
+            <input type="number" id="km" placeholder="Km" required />
+            <p id="msg-error-km" class="hidden"></p>
+         
+            <input type="number" id="price" placeholder="Preço" required />
+            <p id="msg-error-price" class="hidden"></p>
+          
+            <input type="url" id="image" placeholder="foto" required />
+            <p id="msg-error-image" class="hidden"></p>
+
+            <button type="button" class="button" onclick="registerCar()"></button>
+        </div>
+        <div id="listCar">
+
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

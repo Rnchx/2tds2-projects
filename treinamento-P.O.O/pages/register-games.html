@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/register-games.style.css">
+    <title>Cadastro de jogos</title>
+</head>
+
+<body>
+    <div id="container-main">
+        <div id="container1">
+            <h2>Cadastrar Jogo</h2>
+            <label class="labels" for="title">título</label>
+            <input type="text" name="title" id="title-game" class="inputs" required />
+            <label class="labels" for="price">preço</label>
+            <input type="number" name="price" id="price-game" class="inputs" required />
+            <label class="labels" for="description">descrição</label>
+            <input type="text" name="description" id="description-game" class="inputs" required />
+            <label class="labels" for="plataform">plataforma</label>
+            <input type="text" name="plataform" id="plataform-game" class="inputs" required />
+            <label class="labels" for="image">Link da imagem</label>
+            <input type="url" name="image" id="link-image" class="inputs" required />
+
+            <div id="errorMensage">
+                <p id="msg-error" class="hidden"></p>
+            </div>
+            <div id="sucessMensage">
+                <p id="msg-sucess" class="hidden"></p>
+            </div>
+
+            <button type="button" id="create-game" class="button" onclick="registerGame()">Cadastrar</button>
+
+        </div>
+    </div>
+
+    <div id="container2" class="hidden">
+    </div>
+
+    <script src="../js/register-games.script.js"></script>
+</body>
+
+</html>
