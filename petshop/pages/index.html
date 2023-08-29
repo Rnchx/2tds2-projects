@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <h1 id="h1-header">Clínica Veterinária</h1>
+        <h1 id="h1-header">Clínica Rocha.CO</h1>
         <div id="div-header">
             <button id="btn-cadastro" onclick="pageCadastro()">Cadastro</button>
             <button id="btn-lista-exibicao" onclick="pageExibicao()">Exibição</button>
@@ -19,11 +19,11 @@
 
     <h1 id="titulo-site" class="style-titulo-site">Cadastro de Pets</h1>
     <h1 id="titulo-cadastrados" class="esconder">Pets Cadastrados</h1>
-        <div id="container-mostrar-animais">
+        <div id="container-mostrar-animais" class="esconder">
 
         </div>
     <main id="main-principal" class="style-main-principal">
-        <div id="div-inputs">
+        <div id="div-inputs" class="style-div-inputs">
 
             <label class="labels">Tutor:</label>
             <input type="text" class="inputs" id="tutor">
@@ -42,16 +42,20 @@
             <label class="labels">Data de Nscimento:</label>
             <input type="date" class="inputs" id="data-nascimento">
 
-            <div id="div-btn">
-                <button type="button" id="btn" onclick="cadastrarPet()">Cadastrar</button>
+            <div id="mensagens">
                 <p id="msg-error" class="hidden"></p>
                 <p id="msg-sucess" class="hidden"></p>
+            </div>
+
+            <div id="div-btn" class="style-div-btn
+            ">
+                <button type="button" id="btn" onclick="cadastrarPet()">Cadastrar</button>
             </div>
         </div>
     </main>
 
-    <footer>
-        <p id="msg-footer">© 2023 Clínica Veterinária. Todos os direitos reservados</p>
+    <footer id="footer">
+        <p id="msg-footer">© 2023 Clínica Rocha.CO. Todos os direitos reservados</p>
     </footer>
     <script src="../js/script.js"></script>
 </body>

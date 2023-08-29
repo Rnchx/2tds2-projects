@@ -5,16 +5,22 @@ class Pet {
         this.especie = especie;
         this.fotoPet = fotoPet;
         this.dataNascimento = dataNascimento;
+        this.age = this.getAge();
     }
 
     getAge() {
-        let nowDate = new Date();
-        let anoAtual = nowDate.getFullYear();
-        let aniversario = new Date(this.dataNascimento);
-        let ano = aniversario.getFullYear();
-        let counter = anoAtual - ano;
+        const nowDate = new Date();
+        const aniversario = new Date(this.dataNascimento);
     
-        return counter;
+        const diferenca = nowDate - aniversario;
+    
+        const dias = diferenca / (1000 * 60 * 60 * 24);
+    
+        const anos = Math.floor(dias / 365);
+        const meses = Math.floor((dias % 365) / 30);
+        const diasRestantes = Math.floor((dias % 365) % 30);
+    
+        return `${anos} anos, ${meses} meses, ${diasRestantes} dias`;
     }
 }
 
@@ -28,7 +34,7 @@ class ListaPets {
     }
 }
 
-const pets = new ListaPets();
+const libaryPets = new ListaPets();
 
 
 //Função para fazer a verificação dos inputs vazios
@@ -75,17 +81,17 @@ function mensagemSucesso(msg) {
 //Função para limpar os campos quando o usuário terminar de preencher o formulário
 function limparCampos() {
 
-    document.getElementById("title-game").value = "";
-    document.getElementById("price-game").value = "";
-    document.getElementById("description-game").value = "";
-    document.getElementById("plataform-game").value = "";
-    document.getElementById("link-image").value = "";
+    document.getElementById("tutor").value = "";
+    document.getElementById("nome-pet").value = "";
+    document.getElementById("especie").value = "";
+    document.getElementById("foto").value = "";
+    document.getElementById("data-nascimento").value = "";
 }
 
 //Função para verificar se a imagem existe
 function verificarImagem(url) {
 
-    if (url.match(/\.(Jpeg|jpg|gif|png)$/) != null) {
+    if (url.match(/\.(Jpeg|jpg|gif|png|webp)$/) != null) {
         return true;
     } else {
         return false;
@@ -95,32 +101,32 @@ function verificarImagem(url) {
 
 //Função que cria o cadastro do Pet no HTML
 function mostrarAnimal() {
-
     let mostrarAnimal = document.getElementById("container-mostrar-animais");
+    mostrarAnimal.innerHTML = '';
 
-    pets.arrayPets.forEach(pet => {
+    libaryPets.arrayPets.forEach(pet => {
         mostrarAnimal.innerHTML += `
-    <img class="style-img" id="img" src="${pet.fotoPet}">
-    <p id="style-title-pet">${pet.tutor}</p>
-    <p id="style-nome-pet">$ ${pet.nomePet}</p>
-    <p id="style-especie-pet">${pet.especie}</p>
-    <p id="style-nscimento-pet">${getAge(pet.dataNascimento)}</p>`;
+        <img class="style-img" id="img" src="${pet.fotoPet}">
+        <p id="style-title-pet">${pet.tutor}</p>
+        <p id="style-nome-pet">${pet.nomePet}</p>
+        <p id="style-especie-pet">${pet.especie}</p>
+        <p id="style-nscimento-pet">${pet.age}</p>`;
     });
 
     let divMostrarAnimal = document.getElementById("container-mostrar-animais");
     divMostrarAnimal.classList.remove("esconder");
-    divMostrarAnimal.classList.add("style-container-mostrar-animal");
+    divMostrarAnimal.classList.add("style-mostrar-animais");
 }
 
 //Função para registrar o animal
-function registrarAnimal() {
+function cadastrarPet() {
     let tutor = document.getElementById("tutor").value;
     let nomePet = document.getElementById("nome-pet").value;
     let especie = document.getElementById("especie").value;
     let fotoPet = document.getElementById("foto").value;
     let dataNascimento = document.getElementById("data-nascimento").value;
 
-    const pet = new Pet(tutor, nomePet, especie, fotoPet, dataNascimento)
+    const pet = new Pet(tutor, nomePet, especie, fotoPet, dataNascimento);
 
     if (verificarInputs()) {
         mensagemErro("Preencha os campos acima");
@@ -128,23 +134,40 @@ function registrarAnimal() {
         if (!verificarImagem(pet.fotoPet)) {
             mensagemErro("Imagem não encontrada")
         } else {
-            mensagemSucesso("Animal cadastrado")
-            pets.add(pet)
+            mensagemSucesso("Animal cadastrado");
+            libaryPets.add(pet);
             limparCampos();
         }
     }
 }
 
+//Função para a página se transformar e mostrar os animais cadastrados
+function pageExibicao() {
+    let tituloSite = document.getElementById("titulo-site");
+    let tituloCadastrados = document.getElementById("titulo-cadastrados");
+    let main = document.getElementById("main-principal");
+    tituloSite.classList.remove("style-titulo-site");
+    tituloSite.classList.add("esconder");
+    tituloCadastrados.classList.remove("esconder");
+    tituloCadastrados.classList.add("style-titulo-site");
+    main.classList.remove("style-main-principal")
+    main.classList.add("esconder");
+    mostrarAnimal();
+}
+
+//Função para voltar para a página inicial
 function pageCadastro() {
     let tituloSite = document.getElementById("titulo-site");
     let tituloCadastrados = document.getElementById("titulo-cadastrados");
-    let containerMostrarAnimais = document.getElementById("container-mostrar-animais");
     let main = document.getElementById("main-principal");
+    let mostrarAnimal = document.getElementById("container-mostrar-animais");
 
-    tituloSite.classList.add("hidden");
-    tituloCadastrados.classList.remove("hidden");
-    tituloCadastrados.classList.add("style-titulo-site");
-    containerMostrarAnimais.classList.remove("hidden");
-    containerMostrarAnimais.classList.add("style-container-mostrar-animais");
-    main.classList.add("hidden")
+    mostrarAnimal.classList.remove("style-mostrar-animais");
+    mostrarAnimal.classList.add("esconder");
+    tituloSite.classList.add("style-titulo-site");
+    tituloSite.classList.remove("esconder");
+    tituloCadastrados.classList.add("esconder");
+    tituloCadastrados.classList.remove("style-titulo-site");
+    main.classList.add("style-main-principal")
+    main.classList.remove("esconder");
 }
