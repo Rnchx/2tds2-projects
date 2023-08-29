@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Pet Shop</title>
+</head>
+
+<body>
+    <header>
+        <h1 id="h1-header">Clínica Veterinária</h1>
+        <div id="div-header">
+            <p id="btn-cadastro" class="">Cadastro</p>
+            <p id="btn-lista-exibicao" class="">Exibição</p>
+        </div>
+    </header>
+
+    <h1 id="titulo-site">Cadastro de Pets</h1>
+
+    <main>
+        <div id="div-inputs">
+
+            <label class="labels">Tutor:</label>
+            <input type="text" class="inputs" id="tutor">
+
+            <label class="labels">Nome do Pet:</label>
+            <input type="text" class="inputs" id="nome-pet">
+
+
+            <label class="labels">Espécie:</label>
+            <input type="text" class="inputs" id="especie">
+
+
+            <label class="labels">Foto do Pet:</label>
+            <input type="url" class="inputs" id="foto">
+
+            <label class="labels">Data de Nscimento:</label>
+            <input type="date" class="inputs" id="data-nascimento">
+
+            <div id="div-btn">
+                <button type="button" id="btn" onclick="cadastrarPet()">Cadastrar</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p id="msg-footer">© 2023 Clínica Veterinária. Todos os direitos reservados</p>
+    </footer>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
