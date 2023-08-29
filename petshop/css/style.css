@@ -51,15 +51,14 @@ header {
     cursor: pointer;
     border-radius: 7%;
 }
-
-#titulo-site {
+.style-titulo-site {
     text-align: center;
     color: rgb(0, 65, 0);
     margin-top: 5rem;
     font-weight: 600;
 }
 
-main {
+.style-main-principal {
     margin-top: 3rem;
     display: flex;
     align-items: center;
@@ -117,7 +116,15 @@ footer {
     margin-top: 9rem;
 }
 
-.hidden {
+.esconder {
     display: none;
     visibility: hidden;
+}
+
+.mensagem-erro {
+    color: rgb(123, 255, 0);
+}
+
+.mensagem-sucesso {
+    color: rgb(255, 9, 9);
 }

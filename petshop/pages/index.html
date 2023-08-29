@@ -12,14 +12,17 @@
     <header>
         <h1 id="h1-header">Clínica Veterinária</h1>
         <div id="div-header">
-            <p id="btn-cadastro" class="">Cadastro</p>
-            <p id="btn-lista-exibicao" class="">Exibição</p>
+            <button id="btn-cadastro" onclick="pageCadastro()">Cadastro</button>
+            <button id="btn-lista-exibicao" onclick="pageExibicao()">Exibição</button>
         </div>
     </header>
 
-    <h1 id="titulo-site">Cadastro de Pets</h1>
+    <h1 id="titulo-site" class="style-titulo-site">Cadastro de Pets</h1>
+    <h1 id="titulo-cadastrados" class="esconder">Pets Cadastrados</h1>
+        <div id="container-mostrar-animais">
 
-    <main>
+        </div>
+    <main id="main-principal" class="style-main-principal">
         <div id="div-inputs">
 
             <label class="labels">Tutor:</label>
@@ -41,6 +44,8 @@
 
             <div id="div-btn">
                 <button type="button" id="btn" onclick="cadastrarPet()">Cadastrar</button>
+                <p id="msg-error" class="hidden"></p>
+                <p id="msg-sucess" class="hidden"></p>
             </div>
         </div>
     </main>
