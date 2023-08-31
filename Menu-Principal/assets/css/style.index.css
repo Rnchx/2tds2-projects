@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100&display=swap');
+
 * {
     padding: 0%;
     margin: 0%;
@@ -10,20 +13,49 @@ body {
 h1 {
     text-align: center;
     font-size: 3rem;
+    font-family: 'Julius Sans One', sans-serif;
+    text-decoration: underline;
+    margin-top: 0.5rem;
 }
 
 main {
     text-align: center;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 15rem;
 }
 
 button {
     text-decoration: none;
-    width: 100%;
     margin-top: 5rem;
-    min-width: 700px;
-    min-height: 30px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    margin: 1rem;
+    background-color: #202020;
+    border: 2px solid rgb(57, 57, 255);
+    transition: 2s;
+}
+
+button:hover {
+    background-color: cornflowerblue;
+    margin-top: -8rem;
+    color: black;
+    transition: 2s;
+    border: none;
+}
+
+button:focus, button:active {
+    background-color: #202020;
+    margin-top: 5rem;
+    transition: 2s;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Londrina Solid', cursive;
+    font-size: 20px;
 }
