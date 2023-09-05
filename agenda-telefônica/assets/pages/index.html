@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-b">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Agenda Telefônica</title>
+</head>
+<body>
+    <main>
+        <h1>Agenda Telefônica</h1>
+        <div id="container1">
+            <input type="text" id="name" class="inputs" placeholder="Nome Completo" required />
+            <input type="text" maxlength="11" id="telFix" class="inputs" placeholder="Telefone fixo" required />
+            <input type="text" maxlength="11" id="telCell" class="inputs" placeholder="Telefone Celular" required />
+            <input type="text" id="urlImage" class="inputs" placeholder="URL da foto" required />
+            <input type="date" id="birthday" class="inputs" required />
+            <input type="text" id="email" class="inputs" placeholder="e-mail" required />
+            <input type="number" maxlength="8" id="cep" class="inputs" placeholder="cep" required />
+            <input type="text" id="city" class="inputs" placeholder="cidade" required />
+            <input type="text" id="instagram" class="inputs" placeholder="@instagram" required />
+            <input type="text" id="github" class="inputs" placeholder="@Github" required />
+        </div>
+        <div id="msg">
+            <p id="sucess-msg" class="hidden"></p>
+            <p id="error-msg" class="hidden"></p>
+        </div>
+        <div id="container-button">
+            <button type="button" id="button" onclick="createContact()">Adicionar Contato</button>
+        </div>
+        <div id="container2">
+
+        </div>
+        <div id="container3">
+
+        </div>
+    </main>
+    <script src="../js/script.js"></script>
+</body>
+</html>
