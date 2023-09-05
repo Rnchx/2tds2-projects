@@ -55,9 +55,18 @@ button:hover {
 
 .style-sucess-msg {
     color: chartreuse;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .style-error-msg {
     color: red;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
 }
 
