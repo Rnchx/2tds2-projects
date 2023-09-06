@@ -9,18 +9,22 @@ class Pet {
     }
 
     getAge() {
-        const nowDate = new Date();
-        const aniversario = new Date(this.dataNascimento);
+        const dataNascimentoObj = new Date(this.dataNascimento);
+        const agora = new Date();
     
-        const diferenca = nowDate - aniversario;
+        const diffEmMilissegundos = agora - dataNascimentoObj;
     
-        const dias = diferenca / (1000 * 60 * 60 * 24);
+        // Calcula anos
+        const anos = Math.floor(diffEmMilissegundos / (365 * 24 * 60 * 60 * 1000));
     
-        const anos = Math.floor(dias / 365);
-        const meses = Math.floor((dias % 365) / 30);
-        const diasRestantes = Math.floor((dias % 365) % 30);
+        // Calcula meses
+        const meses = Math.floor((diffEmMilissegundos % (365 * 24 * 60 * 60 * 1000)) / (30 * 24 * 60 * 60 * 1000));
     
-        return `${anos} anos, ${meses} meses, ${diasRestantes} dias`;
+        // Calcula dias restantes
+        const diasRestantes = Math.floor((diffEmMilissegundos % (30 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
+
+            return `${anos}anos, ${meses}meses e ${diasRestantes}dias`;
+        
     }
 }
 
@@ -107,10 +111,10 @@ function mostrarAnimal() {
     libaryPets.arrayPets.forEach(pet => {
         mostrarAnimal.innerHTML += `
         <img class="style-img" id="img" src="${pet.fotoPet}">
-        <p id="style-title-pet">${pet.tutor}</p>
-        <p id="style-nome-pet">${pet.nomePet}</p>
-        <p id="style-especie-pet">${pet.especie}</p>
-        <p id="style-nscimento-pet">${pet.age}</p>`;
+        <p id="style-title-pet">Tutor: ${pet.tutor}</p>
+        <p id="style-nome-pet">Nome do pet: ${pet.nomePet}</p>
+        <p id="style-especie-pet">Espécie: ${pet.especie}</p>
+        <p id="style-nscimento-pet">Idade: ${pet.age}</p>`;
     });
 
     let divMostrarAnimal = document.getElementById("container-mostrar-animais");
@@ -125,8 +129,9 @@ function cadastrarPet() {
     let especie = document.getElementById("especie").value;
     let fotoPet = document.getElementById("foto").value;
     let dataNascimento = document.getElementById("data-nascimento").value;
+    const dataNascimentoObj = new Date(dataNascimento);
 
-    const pet = new Pet(tutor, nomePet, especie, fotoPet, dataNascimento);
+    const pet = new Pet(tutor, nomePet, especie, fotoPet, dataNascimentoObj);
 
     if (verificarInputs()) {
         mensagemErro("Preencha os campos acima");
