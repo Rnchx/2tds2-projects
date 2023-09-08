@@ -1,40 +1,66 @@
 <!DOCTYPE html>
-<html lang="pt-b">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Agenda Telefônica</title>
 </head>
 <body>
     <main>
-        <h1>Agenda Telefônica</h1>
-        <div id="container1">
-            <input type="text" id="name" class="inputs" placeholder="Nome Completo" required />
-            <input type="text" maxlength="11" id="telFix" class="inputs" placeholder="Telefone fixo" required />
-            <input type="text" maxlength="11" id="telCell" class="inputs" placeholder="Telefone Celular" required />
-            <input type="text" id="urlImage" class="inputs" placeholder="URL da foto" required />
-            <input type="date" id="birthday" class="inputs" required />
-            <input type="text" id="email" class="inputs" placeholder="e-mail" required />
-            <input type="text" maxlength="8" id="cep" class="inputs" placeholder="cep" required />
-            <input type="text" id="city" class="inputs" placeholder="cidade" required />
-            <input type="text" id="instagram" class="inputs" placeholder="@instagram" required />
-            <input type="text" id="github" class="inputs" placeholder="@Github" required />
-        </div>
-        <div id="msg">
-            <p id="sucess-msg" class="hidden"></p>
-            <p id="error-msg" class="hidden"></p>
-        </div>
-        <div id="container-button">
-            <button type="button" id="button" onclick="createContact()">Adicionar Contato</button>
-        </div>
-        <div id="container2">
+        <article id="form-field">
+            <section class="input-field">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required placeholder="Nome...">
+            </section>
+            <section class="input-field">
+                <label for="telephone">Telefone fixo:</label>
+                <input type="number" id="telephone" name="telephone" required placeholder="Telefone fixo..." max="11">
+            </section>
+            <section class="input-field">
+                <label for="phone">Telefone celular:</label>
+                <input type="number" id="phone" name="phone" required placeholder="Telefone celular..." max="11">
+            </section>
+            <section class="input-field">
+                <label for="photo">Foto:</label>
+                <input type="text" id="photo" name="photo" required placeholder="URL da foto...">
+            </section>
+            <section class="input-field">
+                <label for="birthdate">Data de aniversário:</label>
+                <input type="date" id="birthdate" name="birthdate" required>
+            </section>
+            <section class="input-field">
+                <label for="email">E-mail:</label>
+                <input type="text" id="email" name="email" required placeholder="E-mail...">
+            </section>
+            <section class="input-field">
+                <label for="cep">CEP:</label>
+                <input type="number" id="cep" name="cep" required placeholder="CEP..." max="8">
+            </section>
+            <section class="input-field">
+                <label for="city">Cidade:</label>
+                <input type="text" id="city" name="city" required placeholder="Cidade...">
+            </section>
+            <section class="input-field">
+                <label for="insta">Instagram:</label>
+                <input type="text" id="insta" name="insta" required placeholder="@...">
+            </section>            
+            <section class="input-field">
+                <label for="github">GitHub:</label>
+                <input type="text" id="github" name="github" required placeholder="GitHub...">
+            </section>
+            <button type="button" onclick="catchValues()">Register Contact</button>
+            <section id="msg">
+                
+            </section>
+        </article>
+        <article id="cards">
 
-        </div>
-        <div id="container3">
+        </article>
+        <article id="big-card">
 
-        </div>
+        </article>
     </main>
     <script src="../js/script.js"></script>
 </body>

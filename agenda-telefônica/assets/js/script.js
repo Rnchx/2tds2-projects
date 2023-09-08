@@ -1,21 +1,34 @@
 class User {
-    constructor(name, telFix, telCell, urlImage, birthday, email, cep, city, instagram, github) {
+    constructor(name, telephone, phone, photo, birthdate, email, cep, city, insta, git) {
         this.name = name;
-        this.telFix = telFix;
-        this.telCell = telCell;
-        this.urlImage = urlImage;
-        this.birthday = birthday;
-        this.sign = this.getZodiacSign(this.birthday);
-        this.age = this.getAge(this.birthday);
+        this.telephone = telephone;
+        this.phone = phone;
+        this.photo = photo;
+        this.birthdate = birthdate;
+        this.age = this.getAge(this.birthdate);
+        this.sign = this.getSign(this.birthdate);
         this.email = email;
         this.cep = cep;
         this.city = city;
-        this.instagram = instagram;
-        this.github = github;
-        this.id = (Math.random() * 9999);
+        this.insta = insta;
+        this.git = git;
+        this.id = Math.floor(Math.random() * 9999);
+        console.log(telephone);
     }
 
-    getZodiacSign(birth) {
+    getAge(birth) {
+        let today = new Date();
+        let birthdate = new Date(birth);
+        let age = today.getFullYear() - birthdate.getFullYear();
+        let month = today.getMonth() - birthdate.getMonth();
+
+        if (month < 0 || (month === 0 && today.getDate() < birthdate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+
+    getSign(birth) {
         let birthdate = new Date(birth);
         let day = birthdate.getDate();
         let month = birthdate.getMonth() + 1;
@@ -47,123 +60,106 @@ class User {
         }
     }
 
-    getAge(birth) {
-        let today = new Date();
-        let birthdate = new Date(birth);
-        let age = today.getFullYear() - birthdate.getFullYear();
-        let month = today.getMonth() - birthdate.getMonth();
 
-        if (month < 0 || (month === 0 && today.getDate() < birthdate.getDate())) {
-            age--;
-        }
-        return age;
+    deletUSer() {
+
+    }
+
+    editUser() {
+
     }
 }
 
 class ListUser {
     constructor() {
-        this.users = [];
+        this.list = [];
     }
 
     addUser(user) {
-        if (isAnyInputEmpty(user)) {
-            sendErrorMsg("Preencha todos campos!");
-        }else if(verifyUrlImage(user.urlImage)) {
-            sendErrorMsg("link da imagem inválido");
-        }else {
-            sendSucessMsg('Contato adicionado à biblioteca');
-            this.users.push(user);
+        if(isAnyInputEmpty()) {
+            envieMsg("preencha todos os campos", "error");
+        } else if (!isURLValida(user.photo)) {
+            envieMsg("coloque um link válido", "success");
+        } else {
+            this.list.push(user);
             clearInputs();
-            createUser();
+            renderCard();
         }
     }
 
-    VerifyIdExist(id){
-        return this.users.find(user => user.id === id)
+    getPersonPeloIdQueEuPassar(id){
+        return this.list.find(user => user.id === id)
+        // return é um objeto do tipo pessoa singular.
     }
+
 }
 
-const libaryUsers = new ListUser();
+const userList = new ListUser();
 
-function createContact() {
-    const name = document.getElementById("name").value;
-    const telFix = document.getElementById("telFix").value;
-    const telCell = document.getElementById("telCell").value;
-    const urlImage = document.getElementById("urlImage").value;
-    const birthday = document.getElementById("birthday").value;
-    const email = document.getElementById("email").value;
-    const cep = document.getElementById("cep").value;
-    const city = document.getElementById("city").value;
-    const instagram = document.getElementById("instagram").value;
-    const github = document.getElementById("github").value;
+function catchValues() {
+    let name = document.getElementById("name").value;
+    let telephone = document.getElementById("telephone").value;
+    let phone = document.getElementById("phone").value;
+    let photo = document.getElementById("photo").value;
+    let birthdate = document.getElementById("birthdate").value;
+    let email = document.getElementById("email").value;
+    let cep = document.getElementById("cep").value;
+    let city = document.getElementById("city").value;
+    let insta = document.getElementById("insta").value;
+    let github = document.getElementById("github").value;
 
-    const user = new User(name, telFix, telCell, urlImage, birthday, email, cep, city, instagram, github);
+    const user = new User(name, telephone, phone, photo, birthdate, email, cep, city, insta, github);
 
-    libaryUsers.addUser(user);
-}
+    console.log(phone);
+    console.log(telephone);
 
-
-function sendErrorMsg(msg) {
-
-    document.getElementById("error-msg").innerHTML = msg;
-    document.getElementById("error-msg").classList.remove("hidden");
-    document.getElementById("sucess-msg").classList.add("style-error-msg");
-    setTimeout(function () {
-        document.getElementById("sucess-msg").classList.remove("style-error-msg");
-        document.getElementById("error-msg").classList.add("hidden");
-    }, 4000);
-}
-
-function sendSucessMsg(msg) {
-    console.log("Passou pela funcao sendSucessMsg()");
-
-    document.getElementById("sucess-msg").innerHTML = msg;
-    document.getElementById("sucess-msg").classList.remove("hidden");
-    document.getElementById("sucess-msg").classList.add("style-sucess-msg");
-    setTimeout(function () {
-        document.getElementById("sucess-msg").classList.remove("style-sucess-msg");
-        document.getElementById("sucess-msg").classList.add("hidden");
-    }, 4000);
+    userList.addUser(user);
 }
 
 function isAnyInputEmpty() {
-    const name = document.getElementById("name").value;
-    const telFix = document.getElementById("telFix").value;
-    const telCell = document.getElementById("telCell").value;
-    const urlImage = document.getElementById("urlImage").value;
-    const birthday = document.getElementById("birthday").value;
-    const email = document.getElementById("email").value;
-    const cep = document.getElementById("cep").value;
-    const city = document.getElementById("city").value;
-    const instagram = document.getElementById("instagram").value;
-    const github = document.getElementById("github").value;
-
-    if (name == "" || telFix == "" || telCell == "" || urlImage == "" || birthday == "" || email == "" || cep == "" || city == "" || instagram == "" || github == "") {
-        return true
+    if (document.getElementById("name").value == "" || document.getElementById("telephone").value == "" || document.getElementById("phone").value == "" || document.getElementById("photo").value == "" || document.getElementById("birthdate").value == "" || document.getElementById("email").value == "" || document.getElementById("cep").value == "" || document.getElementById("city").value == "" || document.getElementById("insta").value == "" || document.getElementById("github").value == "") {
+        return true;
     } else {
-        return false
+        return false;
+    }
+}
+
+function envieMsg(msg, tipoMsg) {
+
+    let msgDiv = document.getElementById("msg");
+    msgDiv.innerHTML = '';
+
+    let msgParaTela = `
+        <p class='${tipoMsg}'>${msg}</p>
+    `
+
+    msgDiv.innerHTML = msgParaTela;
+
+
+    setTimeout(function () {
+        msgDiv.innerHTML = '';
+    }, 3000)
+}
+
+function isURLValida(url) {
+    if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+        return true;
+    } else {
+        return false;
     }
 }
 
 function clearInputs() {
     document.getElementById("name").value = "";
-    document.getElementById("telFix").value = "";
-    document.getElementById("telCell").value = "";
-    document.getElementById("urlImage").value = "";
-    document.getElementById("birthday").value = "";
+    document.getElementById("telephone").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("photo").value = "";
+    document.getElementById("birthdate").value = "";
     document.getElementById("email").value = "";
     document.getElementById("cep").value = "";
     document.getElementById("city").value = "";
-    document.getElementById("instagram").value = "";
+    document.getElementById("insta").value = "";
     document.getElementById("github").value = "";
-}
-
-function verifyUrlImage(url) {
-    if (url.match(/\.(jpeg|jpg|gif|png|webp)$/i) != null) {
-        return false;
-    } else {
-        return true;
-    }
 }
 
 function formatedCellphone(cellphone) {
@@ -177,64 +173,94 @@ function formatedCellphone(cellphone) {
     return cellphoneFormated;
 }
 
-function formatedCEP(value) {
-    let cep = String(value).split("");
-    let cepNew = cep[0] + cep[1] + cep[2] + cep[3] + cep[4] + "-" + cep[5] + cep[6] + cep[7];
+function formatedTelephone(telephoneFix) {
 
-    return cepNew;
+    let cellphoneArray = telephoneFix.split("");
+    let telephoneFormated = "(" + cellphoneArray[0] + cellphoneArray[1] + ")"
+        + " " + cellphoneArray[2] + cellphoneArray[3] + cellphoneArray[4]
+        + cellphoneArray[5] + cellphoneArray[6] + "-"
+        + cellphoneArray[7] + cellphoneArray[8]
+        + cellphoneArray[9];
+    return telephoneFormated;
 }
 
-function dateBr(date) {
-    const dateArray = date.split("-");
-    const datePTBR = dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0];
+function dateinPTBR(date) {
+
+    let dateArray = date.split("-");
+    let datePTBR = dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0];
     return datePTBR;
 }
 
-function createUser() {
-    let showCardUser = document.getElementById("container2");
-    showCardUser.innerHTML = '';
+function formatedCEP(value) {
+    let cep = String(value).split("");
+    let formated_cep = cep[0] + cep[1] + cep[2] + cep[3] + cep[4] + "-" + cep[5] + cep[6] + cep[7];
 
-        libaryUsers.users.forEach(user => {
-        showCardUser.innerHTML += `
-        <div class="carContact" onclick="showInformation(${user.id})">
-        <img src="${user.urlImage} alt="${user.name}-photo">
-        <div class="information-card">
-        <p>${user.name}</p>
-        <p>Telefone fixo: ${formatedCellphone(user.telFix)}</p>
-        <p>Telefone Celular: ${formatedCellphone(user.telCell)}</p>
-        </div>
-        </div>`
-    });
+    return formated_cep;
 }
 
-function showInformation(id) {
-    const user = libaryUsers.VerifyIdExist(id);
-    let showUser = document.getElementById("container3");
-    showUser.innerHTML = '';
+function renderCard() {
+    let listHTML = document.getElementById("cards");
+    let text = "";
 
-        showUser.innerHTML += `
-        <h1>Detalhes</h1>
-        <main class="big-card">
-        <img class="style-img" id="img" src="${user.urlImage}">
-        <p id="style-name">${user.name}</p>
-        <p id="style-id">${user.id}</p>
-        </div>
-        <div class="big-card2">
-        <p id="style-telCell">${formatedCellphone(user.telCell)}</p>
-        <p id="style-telFix">${formatedCellphone(user.telFix)}</p>
-        <p id="style-birthday">${dateBr(user.birthday)}</p>
-        <p id="style-age">${user.age}</p>
-        <p id="style-sign">${user.sign}</p>
-        <p id="style-email">${user.email}</p>
-        <p id="style-cep">${formatedCEP(user.cep)}</p>
-        <p id="style-city">${user.city}</p>
-        <p id="style-instagram">${user.instagram}</p>
-        <p id="style-github">${user.github}</p>
-        </div>
-        <div class="socialMedias">
-        <a href="https://wa.me/55${user.telCell}"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://www.instagram.com/${user.instagram}/"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://github.com/${user.github}"><i class="fa-brands fa-github"></i></a>
-        </div>
-        </main>`
+    userList.list.forEach(user => {
+        text += `
+            <div class="cardTop" onclick="renderContact(${user.id})">
+                <img src="${user.photo} alt="${user.name}-photo">
+                <div class="content-card">
+                    <b><p>${user.name}</p></b>
+                    <p>Telephone: ${formatedTelephone(user.telephone)}</p>
+                    <p>Phone: ${formatedCellphone(user.phone)}</p>
+                </div>
+            </div>
+        `
+        console.log(formatedCellphone(user.telephone));
+    })
+
+    listHTML.innerHTML = text;
+}
+
+
+function renderContact(id){
+    const user = userList.getPersonPeloIdQueEuPassar(id);
+    let bigCard = document.getElementById("big-card");
+        let text = "";
+       
+            text = `
+                <h1>Detalhes do contato:</h1>
+                <section class="content-bigcard">
+                    <img src=${user.photo} alt="${user.name}-photo">
+                    <b><p>${user.name}</p></b>
+                    <p>Id:${user.id}</p>
+                </section>
+                <section class="other-informations">
+                    <p><b>Número de celular:</b> ${formatedCellphone(user.phone)}</p>
+                    <p><b>Telefone Fixo:</b> ${formatedTelephone(user.telephone)}</p>
+                    <p><b>Data de aniversário:</b> ${dateinPTBR(user.birthdate)}</p>
+                    <p><b>Idade:</b> ${user.age}</p>
+                    <p><b>Signo:</b> ${user.sign}</p>
+                    <p><b>Email:</b> ${user.email}</p>
+                    <p><b>CEP:</b> ${formatedCEP(user.cep)}</p>
+                    <p><b>Cidade:</b> ${user.city}</p>
+                    <p><b>Instagram:</b> ${user.insta}</p>
+                    <p><b>GitHub:</b> ${user.git}</p>
+                </section>
+                <section class="icons-card">
+                    <div class="whats-icon">
+                        <a href="https://wa.me/55${user.phone}" target="_blank">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                    <div class="insta-icon">
+                        <a href="https://www.instagram.com/${user.insta}/" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </div>
+                    <div class="git-icon">
+                        <a href="https://github.com/${user.git}" target="_blank">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </section>
+            `
+        bigCard.innerHTML = text;
 }
