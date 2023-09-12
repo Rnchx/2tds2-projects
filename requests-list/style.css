@@ -1,0 +1,12 @@
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.msg-error {
+    color: red;
+}
+
+#div-btn {
+    margin-top: 1rem;
+}

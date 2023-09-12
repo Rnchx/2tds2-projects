@@ -14,7 +14,7 @@ class Team {
     calcReservas() {
         return Math.floor(this.qnt / 2);
     }
-
+    
     calcTotal() {
         return this.qnt + this.reservs;
     }
