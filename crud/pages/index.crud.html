@@ -1,42 +1,32 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/style.crud.css">
-    <title>Crud</title>
+    <link rel="stylesheet" href="../assets/css/style.crud.css" type="text/css">
+    <title>Document</title>
 </head>
-
 <body>
-    <main id="container1">
-        <div id="receive-information">
-            <h1>Cadastro de jogadores</h1>
+    <h2>Cadastro de equipes</h2>
 
-            <label for="equip-name">Nome da Equipe</label>
-            <input type="text" name="equip-name" id="equip-name" class="inputs">
-            <label for="number-players">Número de jogadores</label>
-            <input type="number" name="number-players" id="number-players" class="inputs">
-        </div>
-        <div id="dib-btn">
-            <div id="msg">
+    <div>
+        <label>Nome da equipe</label>
+        <input type="text" id="team-name">
 
-            </div>
-            <button type="button" id="btn-register" onclick="catchValues()">Cadastrar</button>
-            <button type="button" id="btn-edit" onclick="editTeam()">Editar</button>
-        </div>
-    </main>
+        <label>Jogadores titulares</label>
+        <input type="number" id="qnt">
+    </div>
 
-    <main id="container2">
-        <div id="small-card">
+    <button id="btn-register" type="button" onclick="catchValues()">Cadastrar</button>
+    <button id="btn-edit" type="button" class="hidden" onclick="editTeam()">Editar</button>
 
-        </div>
+    <div id="list-teams">
 
-        <div id="big-card">
+    </div>
+    <div id="list-oneteam">
 
-        </div>
-    </main>
+    </div>
+
     <script src="../assets/js/script.crud.js"></script>
 </body>
-
 </html>

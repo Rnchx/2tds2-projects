@@ -1,167 +1,153 @@
 class Team {
-    constructor(name, holders) {
+    constructor(name, qnt) {
+        this.id = this.id();
         this.name = name;
-        this.holders = holders;
-        this.id =  this.generateId();
-        this.reservations = this.calculateReservation();
-        this.totalPlayers = this.calculatePlayers();
+        this.qnt = qnt;
+        this.reservs = this.calcReservas();
+        this.total = this.calcTotal();
     }
 
-    generateId() {
+    id() {
         return Math.floor(Math.random() * 1000);
     }
 
-    calculateReservation() {
-        return Math.floor(this.holders / 2);
+    calcReservas() {
+        return Math.floor(this.qnt / 2);
     }
 
-    calculatePlayers() {
-        return Math.floor(this.holders + this.reservations);
+    calcTotal() {
+        return this.qnt + this.reservs;
     }
 }
 
-class Teams {
+class TeamService {
     constructor() {
-        this.arrayTeams = [];
+        this.teams = [];
     }
 
     addTeam(team) {
-        if (isAnyInputEmpty()) {
-            envieMsg("preencha todos os campos", "error");
-        } else {
-            this.arrayTeams.push(team);
-            register();
-        }
+        this.teams.push(team);
     }
 
-    listTeam() {
-        return this.arrayTeams;
+    listTeams() {
+        return this.teams
     }
 
-    getId(id) {
-        return this.arrayTeams.find((team) => team.id == id);
+    listTeamsById(param) {
+        return this.teams.find(team => team.id == param);
     }
 
-    updateTeam(id, holders, name) {
-        const team = this.getId(id);
+    updateTeam(id, name, holders) {
+        const team = this.listTeamsById(id);
 
         team.name = name;
-        team.holders = holders;
-        team.reservations = team.calculateReservation();
-        team.totalPlayers = team.calculatePlayers();
+        team.qnt = holders;
+        team.reservs = team.calcReservas();
+        team.total = team.calcTotal();
 
         return team;
     }
 
-    removeTeam(id) {
-        return this.arrayTeams = this.arrayTeams.filter((team) => team.id != id);
+    deletTeam(param) {
+        return this.teams = this.teams.filter((team) => team.id != param);
     }
 }
 
-const teamList = new Teams();
+const teamService = new TeamService();
 
 function catchValues() {
-    let teamName = document.getElementById("equip-name").value;
-    let numberPlayers = Number (document.getElementById("number-players").value);
+    let name = document.getElementById('team-name').value;
+    let qnt = Number(document.getElementById('qnt').value);
 
-    const team = new Team(teamName, numberPlayers);
+    const team = new Team(name, qnt);
+    teamService.addTeam(team);
 
-    teamList.addTeam(team);
-
-    clearInputs();
+    listTeams();
+    clearFields();
 }
 
-function isAnyInputEmpty() {
-    if (document.getElementById("equip-name").value == "" || document.getElementById("number-players").value == "") {
-        return true;
-    } else {
-        return false;
-    }
-}
+function listTeams() {
+    const teams = teamService.listTeams();
 
-function envieMsg(msg, tipoMsg) {
+    const listElement = document.getElementById('list-teams');
+    listElement.innerHTML = '';
 
-    let msgDiv = document.getElementById("msg");
-    msgDiv.innerHTML = '';
-
-    let msgParaTela = `
-        <p class='${tipoMsg}'>${msg}</p>
-    `
-    msgDiv.innerHTML = msgParaTela;
-
-    setTimeout(function () {
-        msgDiv.innerHTML = '';
-    }, 3000)
-}
-
-function clearInputs() {
-    document.getElementById("equip-name").value = "";
-    document.getElementById("number-players").value = "";
-}
-
-function register() {
-    const teams = teamList.listTeam();
-
-    let listHTML = document.getElementById("small-card");
+    let content = '';
 
     teams.forEach(team => {
-        listHTML.innerHTML += `
-            <div class="bigCard" onclick="renderInformations(${team.id})">
-                    <b><p>Nome da equipe: ${team.name}</p></b>
-            </div>
+        content += `
+        <div onclick="listarEquipesPorId(${team.id})">
+            <p>Nome: ${team.name}</p>
+        </div>
         `
     });
+
+    listElement.innerHTML = content;
 }
 
-function renderInformations(id) {
-    const team = teamList.getId(id);
-    let bigCard = document.getElementById("big-card");
+function listarEquipesPorId(id) {
+    const team = teamService.listTeamsById(id);
 
-    bigCard.innerHTML += `
-                <h1>Detalhes do contato:</h1>
-                <section class="other-informations">
-                    <p><b>ID:</b> ${team.id}</p>
-                    <p><b>Nome da equipe:</b> ${team.name}</p>
-                    <p><b>Titulares:</b> ${team.holders}</p>
-                    <p><b>Reservas:</b> ${team.reservations}</p>
-                    <p><b>Total de jogadores:</b> ${team.totalPlayers}</p>
-                    <button onclick="updateTeam(${team.id})">Editar</button>
-                    <button onclick="removeTeam(${team.id})">Remover</button>
-                </section>
-            `
+    document.getElementById('list-oneteam').classList.remove('hidden');
+
+    const listElement = document.getElementById('list-oneteam');
+    listElement.innerHTML = '';
+
+    let content = `
+        <div>
+            <p>Id: ${team.id}</p>
+            <p>Name: ${team.name}</p>
+            <p>Holders: ${team.qnt}</p>
+            <p>Reservs: ${team.reservs}</p>
+            <button onclick="updateTeam(${team.id})">Editar</button>
+            <button onclick="deletarEquipe(${team.id})">Excluir</button>
+        </div>
+    `;
+
+    listElement.innerHTML = content;
 }
 
 let aux = null;
 
 function updateTeam(id) {
-    const team = teamList.getId(id);
+    const team = teamService.listTeamsById(id);
 
-    document.getElementById("equip-name").value = team.name;
-    document.getElementById("number-players").value = team.holders;
+    document.getElementById('team-name').value = team.name;
+    document.getElementById('qnt').value = team.qnt;
 
-    document.getElementById("btn-register").classList.add("hidden");
-    document.getElementById("btn-edit").classList.remove("hidden");
+    document.getElementById('btn-register').classList.add('hidden');
+    document.getElementById('btn-edit').classList.remove('hidden');
 
     aux = id;
 }
 
 function editTeam() {
-    const name = document.getElementById("equip-name").value;
-    const holders = document.getElementById("equip-name").value;
+    const name = document.getElementById('team-name').value;
+    const qnt = document.getElementById('qnt').value;
 
-    teamList.updateTeam(aux, name, holders);
-    
-    register();
+    teamService.updateTeam(aux, name, qnt);
 
-    document.getElementById("btn-register").classList.remove("hidden");
-    document.getElementById("btn-edit").classList.add("hidden");
+    listTeams();
 
-    document.getElementById("big-card").classList.add("hidden");
+    document.getElementById('btn-register').classList.remove('hidden');
+    document.getElementById('btn-edit').classList.add('hidden');
+
+    document.getElementById('list-oneteam').classList.add('hidden');
 
     aux = null;
-    clearInputs();
+    clearFields();
+
 }
 
-function removeTeam(id) {
-    teamList.removeTeam(id);
+function deletarEquipe(id) {
+    teamService.deletTeam(id);
+
+    listTeams();
+
+    document.getElementById('list-oneteam').classList.add('hidden');
+}
+
+function clearFields() {
+    document.getElementById('team-name').value = '';
+    document.getElementById('qnt').value = '';
 }
