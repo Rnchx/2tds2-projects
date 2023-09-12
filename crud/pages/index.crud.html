@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/style.crud.css">
+    <title>Crud</title>
+</head>
+
+<body>
+    <main id="container1">
+        <div id="receive-information">
+            <h1>Cadastro de jogadores</h1>
+
+            <label for="equip-name">Nome da Equipe</label>
+            <input type="text" name="equip-name" id="equip-name" class="inputs">
+            <label for="number-players">Número de jogadores</label>
+            <input type="number" name="number-players" id="number-players" class="inputs">
+        </div>
+        <div id="dib-btn">
+            <div id="msg">
+
+            </div>
+            <button type="button" id="btn-register" onclick="catchValues()">Cadastrar</button>
+            <button type="button" id="btn-edit" onclick="editTeam()">Editar</button>
+        </div>
+    </main>
+
+    <main id="container2">
+        <div id="small-card">
+
+        </div>
+
+        <div id="big-card">
+
+        </div>
+    </main>
+    <script src="../assets/js/script.crud.js"></script>
+</body>
+
+</html>

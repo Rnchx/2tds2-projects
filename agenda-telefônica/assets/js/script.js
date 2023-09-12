@@ -89,7 +89,6 @@ class ListUser {
 
     getPersonPeloIdQueEuPassar(id){
         return this.list.find(user => user.id === id)
-        // return é um objeto do tipo pessoa singular.
     }
 
 }
